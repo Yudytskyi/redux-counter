@@ -8,14 +8,13 @@ import {
 } from '../../actions';
 
 function Counter(props) {
-  const { value, step, increment, decrement, setStep } = props;
+  const { value, increment, decrement, setStep } = props;
   return (
-    <article>
+    <article style={{ margin: '20% 30%', fontSize: '50px' }}>
       <h1>{value}</h1>
       <input
         type="number"
-        value={step}
-        onChange={({ target: { value } }) => setStep(+value)}
+        onChange={({ target: { value: step } }) => setStep(+step)}
       />
       <br />
       <button onClick={decrement}>-</button>
@@ -30,8 +29,8 @@ Counter.propTypes = {
   decrement: PropTypes.func,
 };
 
-const mapStateToProps = ({ counter }) => {
-  return counter;
+const mapStateToProps = state => {
+  return state.counter;
 };
 const mapDispatchToProps = dispatch => {
   return {
